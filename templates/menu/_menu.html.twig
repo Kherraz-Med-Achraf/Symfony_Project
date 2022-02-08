@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Blog</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav">
+                <a class="nav-link" aria-current="page" href="{{path('liste_articles')}}">Accueil</a>
+                {% if is_granted ('ROLE_ADMIN') %}
+                <a class="nav-link" aria-current="page" href="{{path('ajout_articles')}}">Ajout Article</a>
+                <a class="nav-link" aria-current="page" href="{{path('brouillon_article')}}">Les Brouillons</a>
+                {% endif %}
+                {% if is_granted ('IS_AUTHENTICATED_FULLY') %}
+                    <a class="nav-link" aria-current="page" href="{{path('app_logout')}}">Déconnexion</a>
+                {% else %}
+                    <a class="nav-link" aria-current="page" href="{{path('app_login')}}">Connexion</a>
+                {% endif %}
+
+
+            </div>
+        </div>
+    </div>
+</nav>
